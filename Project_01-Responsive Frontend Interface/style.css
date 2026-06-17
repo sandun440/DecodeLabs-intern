@@ -1,0 +1,240 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --mocha: #A59B6F;
+    --ethereal: #A0D4E0;
+    --moonlit: #F2F0EA;
+    --text-dark: #2C2C2C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(180deg, #F8F5F0 0%, #E8F0F5 100%);
+}
+
+/* ==================== GRID BASED LAYOUT ==================== */
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "hero"
+        "services"
+        "about"
+        "portfolio"
+        "footer";
+    grid-template-rows: auto 100vh auto auto auto auto;
+    min-height: 100vh;
+}
+
+header { grid-area: header; }
+#home { grid-area: hero; }
+#services { grid-area: services; }
+#about { grid-area: about; }
+#portfolio { grid-area: portfolio; }
+footer { grid-area: footer; }
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--mocha);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--mocha);
+}
+
+.cta-button {
+    background: var(--mocha);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--text-dark);
+    transition: 0.4s;
+}
+
+/* Hero Section - Grid */
+.hero {
+    grid-area: hero;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 5%;
+    background: linear-gradient(135deg, #f8f5f0, #e0f0f5);
+}
+
+.hero-content {
+    max-width: 520px;
+}
+
+.hero-title {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+}
+
+.highlight {
+    color: var(--mocha);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 1.1rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.primary-btn {
+    background: var(--mocha);
+    color: white;
+    border: none;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+}
+
+/* Services - Grid */
+.services-section {
+    padding: 5rem 5%;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+/* About - Grid */
+.about-section {
+    padding: 5rem 5%;
+    background: white;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Portfolio - Grid */
+.portfolio-section {
+    padding: 5rem 5%;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Footer */
+footer {
+    background: #2C2C2C;
+    color: #ddd;
+    padding: 4rem 5% 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 80px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 2rem 5%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+}
